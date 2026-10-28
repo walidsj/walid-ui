@@ -14,7 +14,8 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80 active:bg-secondary/70",
         outline:
           "border border-border bg-transparent text-foreground hover:bg-muted active:bg-muted/70",
-        ghost: "bg-transparent text-foreground hover:bg-muted active:bg-muted/70",
+        ghost:
+          "bg-transparent text-foreground hover:bg-muted active:bg-muted/70",
         danger:
           "bg-danger text-danger-foreground hover:bg-danger/90 active:bg-danger/80",
       },
@@ -31,8 +32,12 @@ const buttonVariants = cva(
   },
 );
 
-export type ButtonVariant = NonNullable<VariantProps<typeof buttonVariants>["variant"]>;
-export type ButtonSize = NonNullable<VariantProps<typeof buttonVariants>["size"]>;
+export type ButtonVariant = NonNullable<
+  VariantProps<typeof buttonVariants>["variant"]
+>;
+export type ButtonSize = NonNullable<
+  VariantProps<typeof buttonVariants>["size"]
+>;
 
 export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   variant?: ButtonVariant;
@@ -49,10 +54,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
         ref={ref as Ref<HTMLElement>}
         type={type}
-        className={cn(
-          buttonVariants({ variant, size }),
-          className,
-        )}
+        className={cn(buttonVariants({ variant, size }), className)}
       />
     );
   },
