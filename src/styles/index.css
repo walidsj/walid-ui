@@ -1,56 +1,56 @@
-@import 'tailwindcss/theme.css' layer(theme);
-@import 'tailwindcss/utilities.css' layer(utilities) source(none);
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities) source(none);
 
-@source '../components';
-@source not '../components/**/*.test.tsx';
+@source "../components";
+@source not "../components/**/*.test.tsx";
 
 @theme inline {
-	--color-background: var(--ui-background);
-	--color-foreground: var(--ui-foreground);
-	--color-primary: var(--ui-primary);
-	--color-primary-foreground: var(--ui-primary-foreground);
-	--color-secondary: var(--ui-secondary);
-	--color-secondary-foreground: var(--ui-secondary-foreground);
-	--color-muted: var(--ui-muted);
-	--color-muted-foreground: var(--ui-muted-foreground);
-	--color-border: var(--ui-border);
-	--color-ring: var(--ui-ring);
-	--color-danger: var(--ui-danger);
-	--color-danger-foreground: var(--ui-danger-foreground);
-	--radius-ui-sm: var(--ui-radius-sm);
-	--radius-ui-md: var(--ui-radius-md);
-	--radius-ui-lg: var(--ui-radius-lg);
+  --color-background: var(--ui-background);
+  --color-foreground: var(--ui-foreground);
+  --color-primary: var(--ui-primary);
+  --color-primary-foreground: var(--ui-primary-foreground);
+  --color-secondary: var(--ui-secondary);
+  --color-secondary-foreground: var(--ui-secondary-foreground);
+  --color-muted: var(--ui-muted);
+  --color-muted-foreground: var(--ui-muted-foreground);
+  --color-border: var(--ui-border);
+  --color-ring: var(--ui-ring);
+  --color-danger: var(--ui-danger);
+  --color-danger-foreground: var(--ui-danger-foreground);
+  --radius-ui-sm: var(--ui-radius-sm);
+  --radius-ui-md: var(--ui-radius-md);
+  --radius-ui-lg: var(--ui-radius-lg);
 }
 
 :root {
-	--ui-background: oklch(1 0 0);
-	--ui-foreground: oklch(0.24 0.02 264);
-	--ui-primary: oklch(0.51 0.23 277);
-	--ui-primary-foreground: oklch(0.99 0 0);
-	--ui-secondary: oklch(0.955 0.012 264);
-	--ui-secondary-foreground: oklch(0.3 0.03 264);
-	--ui-muted: oklch(0.96 0.008 264);
-	--ui-muted-foreground: oklch(0.5 0.02 264);
-	--ui-border: oklch(0.89 0.012 264);
-	--ui-ring: oklch(0.51 0.23 277);
-	--ui-danger: oklch(0.55 0.22 27);
-	--ui-danger-foreground: oklch(0.99 0 0);
-	--ui-radius-sm: 0.375rem;
-	--ui-radius-md: 0.5rem;
-	--ui-radius-lg: 0.75rem;
+  --ui-background: oklch(1 0 0);
+  --ui-foreground: oklch(0.24 0.02 264);
+  --ui-primary: oklch(0.51 0.23 277);
+  --ui-primary-foreground: oklch(0.99 0 0);
+  --ui-secondary: oklch(0.955 0.012 264);
+  --ui-secondary-foreground: oklch(0.3 0.03 264);
+  --ui-muted: oklch(0.96 0.008 264);
+  --ui-muted-foreground: oklch(0.5 0.02 264);
+  --ui-border: oklch(0.89 0.012 264);
+  --ui-ring: oklch(0.51 0.23 277);
+  --ui-danger: oklch(0.55 0.22 27);
+  --ui-danger-foreground: oklch(0.99 0 0);
+  --ui-radius-sm: 0.375rem;
+  --ui-radius-md: 0.5rem;
+  --ui-radius-lg: 0.75rem;
 }
 
 .dark {
-	--ui-background: oklch(0.18 0.02 264);
-	--ui-foreground: oklch(0.96 0.006 264);
-	--ui-primary: oklch(0.68 0.18 277);
-	--ui-primary-foreground: oklch(0.17 0.03 277);
-	--ui-secondary: oklch(0.27 0.02 264);
-	--ui-secondary-foreground: oklch(0.96 0.006 264);
-	--ui-muted: oklch(0.25 0.02 264);
-	--ui-muted-foreground: oklch(0.72 0.02 264);
-	--ui-border: oklch(0.34 0.015 264);
-	--ui-ring: oklch(0.68 0.18 277);
-	--ui-danger: oklch(0.64 0.2 27);
-	--ui-danger-foreground: oklch(0.17 0.03 27);
+  --ui-background: oklch(0.18 0.02 264);
+  --ui-foreground: oklch(0.96 0.006 264);
+  --ui-primary: oklch(0.68 0.18 277);
+  --ui-primary-foreground: oklch(0.17 0.03 277);
+  --ui-secondary: oklch(0.27 0.02 264);
+  --ui-secondary-foreground: oklch(0.96 0.006 264);
+  --ui-muted: oklch(0.25 0.02 264);
+  --ui-muted-foreground: oklch(0.72 0.02 264);
+  --ui-border: oklch(0.34 0.015 264);
+  --ui-ring: oklch(0.68 0.18 277);
+  --ui-danger: oklch(0.64 0.2 27);
+  --ui-danger-foreground: oklch(0.17 0.03 27);
 }
