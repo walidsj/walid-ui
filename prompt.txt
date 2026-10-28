@@ -1,0 +1,176 @@
+# Prompt: Initialize `@walidsj/react-ui` Design System
+
+Kamu bertindak sebagai **Senior Frontend Engineer dan Design System Architect**. Tugasmu adalah menginisialisasi dan membangun fondasi project `@walidsj/react-ui`, sebuah React component library yang akan dipublikasikan sebagai package npm publik.
+
+Project ini menggunakan:
+- **Runtime dan package manager:** Bun
+- **Language:** TypeScript
+- **UI framework:** React
+- **Primitive components:** Base UI
+- **Styling:** Tailwind CSS v4
+- **Build tool:** Vite
+- **Testing:** Vitest + React Testing Library
+- **Package registry:** npm
+
+## 1. Baca dokumentasi terlebih dahulu
+
+Sebelum membuat atau mengubah file apa pun, baca seluruh file Markdown yang tersedia di root project, terutama:
+
+- `PRD.md`
+- `AGENTS.md`
+- `DESIGN.md`
+- `ARCHITECTURE.md`
+- `TESTING.md`
+- `CONTRIBUTING.md`
+- `RELEASE.md`
+- `SECURITY.md`
+- `README.md`
+- `CHANGELOG.md`
+
+Jika ada file yang tidak ditemukan, catat dan lanjutkan menggunakan dokumentasi yang tersedia. Jangan mengarang isi dokumen yang tidak ada.
+
+Perlakukan dokumen tersebut sebagai sumber utama spesifikasi project. Identifikasi persyaratan, konvensi coding, arsitektur, struktur package, strategi testing, dan mekanisme publikasi sebelum implementasi.
+
+Jika terdapat konflik antardokumen, identifikasi konflik tersebut dan pilih solusi yang paling konsisten dengan tujuan project. Catat keputusan penting yang belum terdokumentasi.
+
+## 2. Tujuan inisialisasi
+
+Bangun fondasi project yang:
+
+1. Menghasilkan package React component library yang siap dikembangkan dan dipublikasikan.
+2. Menggunakan Bun sebagai package manager dan runner utama selama development.
+3. Menghasilkan output JavaScript dan TypeScript declaration yang dapat dikonsumsi aplikasi React.
+4. Mendukung Tailwind CSS v4 tanpa memaksa konsumen menggunakan konfigurasi Tailwind v3.
+5. Memiliki CSS export yang dapat diimpor secara eksplisit.
+6. Memiliki API publik yang jelas dan stabil.
+7. Mendukung tree-shaking.
+8. Memiliki testing, linting, type checking, dan build validation.
+9. Tidak bergantung pada file atau alias path internal yang tidak tersedia setelah package dipublikasikan.
+10. Dapat diuji melalui instalasi package hasil build, bukan hanya melalui source project.
+
+## 3. Inisialisasi dengan Bun
+
+Periksa versi Bun yang tersedia dan kondisi folder project saat ini sebelum menjalankan perintah.
+
+Gunakan Bun untuk mengelola dependency dan menjalankan script. Buat `package.json` yang sesuai untuk library publik dengan nama:
+
+`@walidsj/react-ui`
+
+Gunakan versi awal yang sesuai dengan dokumentasi project, misalnya `0.1.0` jika belum ditentukan.
+
+Pastikan:
+
+- `react` dan `react-dom` diperlakukan sebagai peer dependencies jika sesuai dengan arsitektur library.
+- React dan React DOM tidak ikut dibundel sebagai dependency internal library.
+- Dependency development dicatat dengan benar.
+- Versi dependency kompatibel satu sama lain.
+- Gunakan `bun.lock` sebagai lockfile utama.
+- Jangan membuat atau mempertahankan lockfile kedua tanpa alasan yang jelas.
+- Jangan menggunakan `bunx` untuk menjalankan paket yang belum diverifikasi ketika tersedia alternatif yang lebih aman.
+- Hindari penggunaan versi dependency yang tidak kompatibel atau konfigurasi deprecated.
+
+Jangan langsung menghapus file yang sudah ada. Periksa terlebih dahulu apakah file tersebut diperlukan.
+
+## 4. Struktur project
+
+Gunakan struktur modular yang sesuai dengan `ARCHITECTURE.md`. Jika dokumentasi tidak menentukan struktur secara eksplisit, gunakan struktur awal berikut dan sesuaikan seperlunya:
+
+```text
+.
+├── .changeset/
+│   └── config.json
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+├── docs/
+├── src/
+│   ├── components/
+│   │   ├── button/
+│   │   │   ├── button.tsx
+│   │   │   ├── button.test.tsx
+│   │   │   └── index.ts
+│   │   └── input/
+│   │       ├── input.tsx
+│   │       ├── input.test.tsx
+│   │       └── index.ts
+│   ├── lib/
+│   ├── styles/
+│   │   └── index.css
+│   └── index.ts
+├── .gitignore
+├── AGENTS.md
+├── ARCHITECTURE.md
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── DESIGN.md
+├── LICENSE
+├── PRD.md
+├── README.md
+├── RELEASE.md
+├── SECURITY.md
+├── TESTING.md
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+└── vitest.config.ts
+```
+
+Jangan membuat direktori kosong yang tidak memiliki fungsi. Jika struktur dokumentasi berbeda, ikuti dokumentasi.
+
+## 5. Konfigurasi build package
+
+Konfigurasikan Vite untuk membangun library, bukan aplikasi web biasa.
+
+Persyaratan:
+
+- Format output ESM.
+- TypeScript declaration tersedia untuk konsumen package.
+- React dan React DOM di-externalize dari bundle.
+- Export package jelas dan eksplisit.
+- CSS hasil build dapat diimpor melalui:
+
+  `@walidsj/react-ui/style.css`
+
+- Entry point utama dapat diimpor melalui:
+
+  `@walidsj/react-ui`
+
+- Tidak ada import source internal yang bocor ke output publik.
+- Tidak ada referensi alias TypeScript yang tidak diselesaikan saat build.
+- File `package.json` memiliki `exports`, `files`, `types`, dan metadata yang relevan.
+- Package hanya memasukkan artefak yang memang dibutuhkan konsumen.
+- Pastikan output CSS tidak hilang ketika package dipublikasikan.
+- Pastikan konfigurasi build dan declaration generation saling kompatibel.
+
+Pilih pendekatan deklarasi TypeScript yang sederhana dan stabil, misalnya `vite-plugin-dts` jika cocok dengan konfigurasi Vite. Jangan menambahkan plugin yang tidak dibutuhkan.
+
+Tambahkan script yang relevan, minimal:
+
+- `dev`
+- `build`
+- `typecheck`
+- `test`
+- `test:watch`
+- `lint`
+- `format`
+- `format:check`
+- `clean`
+- `prepublishOnly`, jika mekanisme publikasinya sudah dipastikan kompatibel
+
+Sesuaikan script dengan tool yang benar-benar dipasang. Jangan membuat script palsu yang tidak bisa dijalankan.
+
+## 6. Tailwind CSS v4 dan desain token
+
+Implementasikan fondasi styling mengikuti `DESIGN.md`.
+
+Gunakan Tailwind CSS v4 dengan pendekatan CSS-first, bukan konfigurasi Tailwind v3 secara tidak sengaja.
+
+Pastikan:
+
+- Entry CSS menggunakan sintaks Tailwind v4 yang sesuai.
+- Design tokens didefinisikan secara terstruktur.
+- Warna, radius, typography, spacing, dan token lain mengikuti dokumentasi.
+- Theme light dan dark didukung jika memang ditentukan.
+- CSS package dapat dikonsumsi aplikasi eksternal.
+- Tidak ada asumsi bahwa aplikasi konsumen menggunakan struktur folder atau konfigurasi internal project ini.
+- Tidak mengimpor stylesheet aplikasi demo ke stylesheet library.
