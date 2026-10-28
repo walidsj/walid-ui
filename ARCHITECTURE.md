@@ -66,8 +66,8 @@ Do not rely on consumers importing private source paths.
     output.
 -   `@base-ui/react`: runtime dependency because the library's
     components use it.
--   `clsx` and `tailwind-merge`: runtime dependencies while imported by
-    published source.
+-   `cn`: runtime dependency used for class composition. The library does not
+    use `clsx` or `tailwind-merge` directly.
 -   Vite, Tailwind build plugin, TypeScript, testing libraries, and
     declaration tooling: development dependencies.
 

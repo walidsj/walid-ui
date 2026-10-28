@@ -29,13 +29,14 @@ Import the compiled stylesheet once, then use components from the package
 root:
 
 ``` tsx
-import { Button, Input } from "@walidsj/react-ui";
+import { Button, Input, Textarea } from "@walidsj/react-ui";
 import "@walidsj/react-ui/style.css";
 
 export function Example() {
   return (
     <div style={{ display: "grid", gap: "1rem", maxWidth: "24rem" }}>
       <Input aria-label="Full name" placeholder="Full name" />
+      <Textarea aria-label="Notes" placeholder="Notes" size="lg" />
       <Button variant="primary" size="md">
         Save changes
       </Button>
@@ -77,8 +78,34 @@ consumer-provided `aria-invalid` value is preserved when `invalid` is
 not set. Labels, descriptions, and error messages are composed by the
 consumer.
 
-Both components merge `className` with their internal classes. Conflicting
-Tailwind utilities are resolved with `tailwind-merge`.
+`size` controls the input height and horizontal padding:
+
+- `sm`: compact control (`h-8`)
+- `md`: default control (`h-10`)
+- `lg`: larger control (`h-12`)
+
+### Textarea
+
+Renders a native `<textarea>` and forwards native textarea props and refs.
+
+| Prop        | Type             | Default |
+| ----------- | ---------------- | ------- |
+| `invalid`   | `boolean`        | `false` |
+| `size`      | `sm \| md \| lg` | `md`    |
+| `className` | `string`         | —       |
+
+`invalid` sets `aria-invalid="true"` and applies error styling. A
+consumer-provided `aria-invalid` value is preserved when `invalid` is not set.
+Labels, descriptions, and error messages are composed by the consumer.
+
+`size` controls the minimum height and horizontal padding:
+
+- `sm`: compact textarea (`min-h-16`)
+- `md`: default textarea (`min-h-20`)
+- `lg`: larger textarea (`min-h-28`)
+
+Both form controls merge `className` with their internal classes using the
+`cn` package. Consumers do not need to install `clsx` or `tailwind-merge`.
 
 ## Styling
 
