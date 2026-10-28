@@ -77,6 +77,13 @@ describe("Input", () => {
     expect(input).not.toHaveClass("bg-background");
   });
 
+  it("supports input sizes", () => {
+    const { rerender } = render(<Input aria-label="Search" size="sm" />);
+    expect(screen.getByRole("textbox")).toHaveClass("h-8");
+    rerender(<Input aria-label="Search" size="lg" />);
+    expect(screen.getByRole("textbox")).toHaveClass("h-12");
+  });
+
   it("forwards a ref to the input element", () => {
     const ref = createRef<HTMLInputElement>();
 

@@ -69,6 +69,7 @@ Renders a native `<input>` and forwards native input props and refs.
 | Prop        | Type      | Default |
 | ----------- | --------- | ------- |
 | `invalid`   | `boolean` | `false` |
+| `size`      | `sm \| md \| lg` | `md` |
 | `className` | `string`  | —       |
 
 `invalid` sets `aria-invalid="true"` and applies error styling. A
