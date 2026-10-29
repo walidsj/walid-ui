@@ -57,6 +57,9 @@ The supported entry points are:
 
 -   `@walidsj/react-ui`
 -   `@walidsj/react-ui/style.css`
+-   `@walidsj/react-ui/components/button`
+-   `@walidsj/react-ui/components/input`
+-   `@walidsj/react-ui/components/textarea`
 
 Do not rely on consumers importing private source paths.
 

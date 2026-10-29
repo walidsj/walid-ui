@@ -45,6 +45,14 @@ export function Example() {
 }
 ```
 
+Components can also be imported individually:
+
+``` tsx
+import { Button } from "@walidsj/react-ui/components/button";
+import { Input } from "@walidsj/react-ui/components/input";
+import { Textarea } from "@walidsj/react-ui/components/textarea";
+```
+
 ## Components
 
 ### Button

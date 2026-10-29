@@ -16,9 +16,20 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: fileURLToPath(new URL("./src/index.ts", import.meta.url)),
+      entry: {
+        index: fileURLToPath(new URL("./src/index.ts", import.meta.url)),
+        "components/button/index": fileURLToPath(
+          new URL("./src/components/button/index.ts", import.meta.url),
+        ),
+        "components/input/index": fileURLToPath(
+          new URL("./src/components/input/index.ts", import.meta.url),
+        ),
+        "components/textarea/index": fileURLToPath(
+          new URL("./src/components/textarea/index.ts", import.meta.url),
+        ),
+      },
       formats: ["es"],
-      fileName: "index",
+      fileName: (_format, entryName) => `${entryName}.js`,
       cssFileName: "style",
     },
     target: "es2022",
